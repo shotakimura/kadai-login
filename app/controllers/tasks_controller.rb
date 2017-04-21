@@ -10,7 +10,7 @@ before_action :require_user_logged_in
     @task = current_user.tasks.build(task_params)
     if @task.save
       flash[:success] = 'タスクを追加しました。'
-      redirect_to 'toppages/index'
+      redirect_to root_url
     else
       @tasks = current_user.tasks.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'タスクの追加に失敗しました。'
